@@ -13,6 +13,12 @@
     "hubot-redis-brain": "0.0.2",
     "hubot-slack": "^3.3.0"
   },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*"
+  },
   "engines": {
     "node": "0.10.x"
   }
