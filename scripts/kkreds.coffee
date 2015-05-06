@@ -37,7 +37,8 @@ module.exports = (robot) ->
     save: ->
       robot.brain.set "kkreds-user-#{@name}", {
         kkreds: @kkreds,
-        transactions: @transactions
+        transactions: @transactions,
+        debounce: @debounce
       }
 
   # get user balance
