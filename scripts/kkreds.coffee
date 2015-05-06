@@ -27,9 +27,9 @@ module.exports = (robot) ->
 
       data = robot.brain.get("kkreds-user-#{@name}") || {}
 
-      @kkreds =             data.kkreds || 0
-      @transactions = data.transactions || []
-      @debounce =          data.debouce || null
+      @kkreds =              data.kkreds || 0
+      @transactions =  data.transactions || []
+      @debounce =          data.debounce || null
 
     credit: (amount) ->
       @kkreds += amount
@@ -86,7 +86,7 @@ module.exports = (robot) ->
       return currentUTC == t
 
     # aight I'm going to bed
-    hasNotParticipatedThisMeridian = currentUTC != user.debouce
+    hasNotParticipatedThisMeridian = currentUTC != user.debounce
 
     if is420 && hasNotParticipatedThisMeridian
       user.credit(1)
