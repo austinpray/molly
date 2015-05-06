@@ -59,6 +59,7 @@ module.exports = (robot) ->
       current.getUTCFullYear(),
       current.getUTCMonth(),
       current.getUTCDay(),
+      current.getUTCHours(),
       current.getUTCMinutes(),
     )
 
