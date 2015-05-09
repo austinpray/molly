@@ -118,7 +118,7 @@ module.exports = (robot) ->
       user.save()
       res.reply "successfully mined 1 kkred"
 
-  robot.hear /(pay|tip|give|send) (\S*) (\S*)/i, (res) ->
+  robot.respond /(pay|tip|give|send) (\S*) (\S*)/i, (res) ->
     sender = new User(res)
     target = res.match[2]
     amount = res.match[3]
