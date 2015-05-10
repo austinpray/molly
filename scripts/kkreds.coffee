@@ -45,6 +45,9 @@ module.exports = (robot) ->
     # amount (number)
     # target (User)
     send: (amount, target) ->
+      if new Decimal(amount).comparedTo(0) == -1
+        return {success: false, message: "Amount must be positive"}
+
       if @kkreds.comparedTo(amount) == -1 # have enough creds?
         return {success: false, message: "You do not have enough kkreds"}
       else
