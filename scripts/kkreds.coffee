@@ -130,6 +130,7 @@ module.exports = (robot) ->
       return res.reply "Need to specify a target"
     else
       target = target.replace('@', '') # strip @ mention
+      target = target.toLowerCase() 
 
     if !amount
       return res.reply "Need to specify amount"
