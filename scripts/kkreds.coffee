@@ -11,6 +11,8 @@
 #
 # Author:
 #   austinpray
+# Co-arthur:
+#   darrencattle
 
 Decimal = require "decimal.js"
 validator = require "validator"
@@ -77,7 +79,8 @@ module.exports = (robot) ->
   triggers = [
     "(gibbe|give( me)?) money",
     "pay me( bitch)?",
-    ":watermelon:"
+    ":watermelon:",
+    "d is god"
   ]
 
   robot.hear new RegExp(triggers.join("|"), "i"), (res) ->
@@ -95,14 +98,14 @@ module.exports = (robot) ->
         current.getUTCFullYear(),
         current.getUTCMonth(),
         current.getUTCDay(),
-        4+5, # 4:20 am CST
+        4+6, # 4:20 am CST
         20
       ),
       Date.UTC(
         current.getUTCFullYear(),
         current.getUTCMonth(),
         current.getUTCDay(),
-        16+5 # 4:20 pm CST
+        16+6, # 4:20 pm CST
         20
       )
     ]
