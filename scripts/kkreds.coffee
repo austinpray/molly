@@ -79,8 +79,7 @@ module.exports = (robot) ->
   triggers = [
     "(gibbe|give( me)?) money",
     "pay me( bitch)?",
-    ":watermelon:",
-    "d is god"
+    ":watermelon:"
   ]
 
   robot.hear new RegExp(triggers.join("|"), "i"), (res) ->
@@ -92,20 +91,20 @@ module.exports = (robot) ->
       current.getUTCHours(),
       current.getUTCMinutes(),
     )
-
+    timeoffset = current.getUTCMonth() > 9 && current.getUTCMonth() < 2 ? 5 : 6
     specialTimes = [
       Date.UTC(
         current.getUTCFullYear(),
         current.getUTCMonth(),
         current.getUTCDay(),
-        4+6, # 4:20 am CST
+        4+timeoffset, # 4:20 am CST
         20
       ),
       Date.UTC(
         current.getUTCFullYear(),
         current.getUTCMonth(),
         current.getUTCDay(),
-        16+6, # 4:20 pm CST
+        16+timeoffset, # 4:20 pm CST
         20
       )
     ]
