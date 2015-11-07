@@ -11,6 +11,8 @@
 #
 # Author:
 #   austinpray
+# Co-arthur:
+#   darrencattle
 
 Decimal = require "decimal.js"
 validator = require "validator"
@@ -89,20 +91,20 @@ module.exports = (robot) ->
       current.getUTCHours(),
       current.getUTCMinutes(),
     )
-
+    timeoffset = current.getUTCMonth() > 9 && current.getUTCMonth() < 2 ? 5 : 6
     specialTimes = [
       Date.UTC(
         current.getUTCFullYear(),
         current.getUTCMonth(),
         current.getUTCDay(),
-        4+5, # 4:20 am CST
+        4+timeoffset, # 4:20 am CST
         20
       ),
       Date.UTC(
         current.getUTCFullYear(),
         current.getUTCMonth(),
         current.getUTCDay(),
-        16+5 # 4:20 pm CST
+        16+timeoffset, # 4:20 pm CST
         20
       )
     ]
