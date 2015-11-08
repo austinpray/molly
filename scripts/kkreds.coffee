@@ -91,7 +91,7 @@ module.exports = (robot) ->
       current.getUTCHours(),
       current.getUTCMinutes(),
     )
-    timeoffset = current.getUTCMonth() > 9 && current.getUTCMonth() < 2 ? 5 : 6
+    timeoffset = current.getUTCMonth() > 9 && current.getUTCMonth() < 2 ? 5 : 4
     specialTimes = [
       Date.UTC(
         current.getUTCFullYear(),
