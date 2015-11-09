@@ -89,32 +89,8 @@ module.exports = (robot) ->
 
 	Date::dst = () ->
 			return @getTimezoneOffset() < @stdTimezoneOffset()
-			
-	robot.hear new RegExp(triggers.join("|"), "i"), (res) ->
-		current = new Date()
-		
-		currentUTC = Date.UTC(
-			current.getUTCFullYear(),
-			current.getUTCMonth(),
-			current.getUTCDay(),
-			current.getUTCHours(),
-			current.getUTCMinutes(),
-		)
-
-		is420 = this.check420(current)
-		user = new User(res)
-
-
-		# aight I'm going to bed
-		hasNotParticipatedThisMeridian = currentUTC != user.debounce
-
-		if is420 && hasNotParticipatedThisMeridian
-			user.credit(1)
-			username.debounce = currentUTC
-			user.save()
-			res.reply "successfully mined 1 kkred"
-
-	robot.check420 = (current) ->
+	
+	check420 = (current) ->
 		currentUTC = Date.UTC(
 			current.getUTCFullYear(),
 			current.getUTCMonth(),
@@ -143,7 +119,30 @@ module.exports = (robot) ->
 		is420 = specialTimes.some (t) ->
 				return currentUTC == t
 		return is420
+			
+	robot.hear new RegExp(triggers.join("|"), "i"), (res) ->
+		current = new Date()
+		
+		currentUTC = Date.UTC(
+			current.getUTCFullYear(),
+			current.getUTCMonth(),
+			current.getUTCDay(),
+			current.getUTCHours(),
+			current.getUTCMinutes(),
+		)
 
+		is420 = check420(current)
+		user = new User(res)
+
+
+		# aight I'm going to bed
+		hasNotParticipatedThisMeridian = currentUTC != user.debounce
+
+		if is420 && hasNotParticipatedThisMeridian
+			user.credit(1)
+			username.debounce = currentUTC
+			user.save()
+			res.reply "successfully mined 1 kkred"
 
 	robot.respond /(pay|tip|give|send) (\S*) (\S*)/i, (res) ->
 		sender = new User(res)
