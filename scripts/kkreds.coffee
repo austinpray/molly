@@ -101,7 +101,7 @@ module.exports = (robot) ->
 
     if is420 && hasNotParticipatedThisMeridian
       user.credit(1)
-      username.debounce = currentUTC
+      user.debounce = currentUTC
       user.save()
       res.reply "successfully mined 1 kkred"
 
