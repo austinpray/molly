@@ -91,37 +91,50 @@ module.exports = (robot) ->
       current.getUTCHours(),
       current.getUTCMinutes(),
     )
-    timeoffset = current.getUTCMonth() > 9 && current.getUTCMonth() < 2 ? 5 : 6
-    specialTimes = [
-      Date.UTC(
-        current.getUTCFullYear(),
-        current.getUTCMonth(),
-        current.getUTCDay(),
-        4+timeoffset, # 4:20 am CST
-        20
-      ),
-      Date.UTC(
-        current.getUTCFullYear(),
-        current.getUTCMonth(),
-        current.getUTCDay(),
-        16+timeoffset, # 4:20 pm CST
-        20
-      )
-    ]
 
+    is420 = this.check420(current)
     user = new User(res)
 
-    is420 = specialTimes.some (t) ->
-      return currentUTC == t
 
     # aight I'm going to bed
     hasNotParticipatedThisMeridian = currentUTC != user.debounce
 
     if is420 && hasNotParticipatedThisMeridian
       user.credit(1)
-      user.debounce = currentUTC
+      username.debounce = currentUTC
       user.save()
       res.reply "successfully mined 1 kkred"
+
+  robot.check420 = (current) ->
+    currentUTC = Date.UTC(
+      current.getUTCFullYear(),
+      current.getUTCMonth(),
+      current.getUTCDay(),
+      current.getUTCHours(),
+      current.getUTCMinutes(),
+    )
+    currentOffset = current.getTimezoneOffset() / 60;
+    specialTimes = [
+      Date.UTC(
+        current.getUTCFullYear(),
+        current.getUTCMonth(),
+        current.getUTCDay(),
+        4 + currentOffset, # 4:20 am CST
+        20
+      ),
+      Date.UTC(
+        current.getUTCFullYear(),
+        current.getUTCMonth(),
+        current.getUTCDay(),
+        16 + currentOffset, # 4:20 pm CST
+        20
+      )
+    ]
+
+    is420 = specialTimes.some (t) ->
+        return currentUTC == t
+    return is420
+
 
   robot.respond /(pay|tip|give|send) (\S*) (\S*)/i, (res) ->
     sender = new User(res)
