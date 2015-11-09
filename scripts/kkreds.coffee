@@ -82,17 +82,16 @@ module.exports = (robot) ->
 		":watermelon:"
 	]
 
+	Date::stdTimezoneOffset = () ->
+			jan = new Date(@getFullYear(), 0, 1)
+			jul = new Date(@getFullYear(), 6, 1)
+			return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())
+
+	Date::dst = () ->
+			return @getTimezoneOffset() < @stdTimezoneOffset()
+			
 	robot.hear new RegExp(triggers.join("|"), "i"), (res) ->
 		current = new Date()
-
-		class Date
-			stdTimezoneOffset: ->
-				jan = new Date(@getFullYear(), 0, 1)
-				jul = new Date(@getFullYear(), 6, 1)
-				return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())
-
-			dst: ->
-				return @getTimezoneOffset() < @stdTimezoneOffset()
 		
 		currentUTC = Date.UTC(
 			current.getUTCFullYear(),
