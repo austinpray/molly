@@ -92,7 +92,7 @@ module.exports = (robot) ->
       current.getUTCMinutes(),
     )
 
-    is420 = this.check420(current)
+    is420 = robot.check420(current)
     user = new User(res)
 
 
