@@ -82,7 +82,7 @@ module.exports = (robot) ->
 		":watermelon:"
 	]
 	
-	check420 = (current) ->
+	robot.check420 = (current) ->
 		currentUTC = Date.UTC(
 			current.getUTCFullYear(),
 			current.getUTCMonth(),
@@ -123,7 +123,7 @@ module.exports = (robot) ->
 			current.getUTCMinutes(),
 		)
 
-		is420 = check420(current)
+		is420 = robot.check420(current)
 		user = new User(res)
 
 
