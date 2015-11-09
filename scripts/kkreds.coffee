@@ -81,14 +81,6 @@ module.exports = (robot) ->
 		"pay me( bitch)?",
 		":watermelon:"
 	]
-
-	Date::stdTimezoneOffset = () ->
-			jan = new Date(@getFullYear(), 0, 1)
-			jul = new Date(@getFullYear(), 6, 1)
-			return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())
-
-	Date::dst = () ->
-			return @getTimezoneOffset() < @stdTimezoneOffset()
 	
 	check420 = (current) ->
 		currentUTC = Date.UTC(
@@ -98,7 +90,7 @@ module.exports = (robot) ->
 			current.getUTCHours(),
 			current.getUTCMinutes(),
 		)
-		currentOffset = current.dst()
+		currentOffset = current.getTimezoneOffset() / 60
 		specialTimes = [
 			Date.UTC(
 				current.getUTCFullYear(),
