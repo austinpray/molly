@@ -84,6 +84,16 @@ module.exports = (robot) ->
 
   robot.hear new RegExp(triggers.join("|"), "i"), (res) ->
     current = new Date()
+
+		class Date
+			stdTimezoneOffset: ->
+		    jan = new Date(@getFullYear(), 0, 1)
+		    jul = new Date(@getFullYear(), 6, 1)
+		    return Math.max(jan.getTimezoneOffset(), jul.getTimezoneOffset())
+
+			dst: ->
+		    return @getTimezoneOffset() < @stdTimezoneOffset()
+		
     currentUTC = Date.UTC(
       current.getUTCFullYear(),
       current.getUTCMonth(),
@@ -113,7 +123,7 @@ module.exports = (robot) ->
       current.getUTCHours(),
       current.getUTCMinutes(),
     )
-    currentOffset = current.getTimezoneOffset() / 60;
+    currentOffset = 4 + current.dst()
     specialTimes = [
       Date.UTC(
         current.getUTCFullYear(),
