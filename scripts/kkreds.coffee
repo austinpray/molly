@@ -14,7 +14,7 @@
 # Co-arthur:
 #   darrencattle
 
-Decimal = require "decimal.js"
+Decimal = require("toformat")(require("decimal.js"))
 validator = require "validator"
 
 module.exports = (robot) ->
@@ -145,7 +145,7 @@ module.exports = (robot) ->
       return res.reply "Need to specify a target"
     else
       target = target.replace('@', '') # strip @ mention
-      target = target.toLowerCase() 
+      target = target.toLowerCase()
 
     if !amount
       return res.reply "Need to specify amount"

@@ -5,19 +5,19 @@
   "author": "Austin Pray <austin@austinpray.com>",
   "description": "A simple helpful robot for your Company",
   "dependencies": {
-    "decimal.js": "^4.0.2",
+    "coffee-script": "1.10.0",
+    "decimal.js": "^5.0.7",
     "hubot": "^2.12.0",
     "hubot-diagnostics": "0.0.1",
     "hubot-help": "^0.1.1",
-    "hubot-heroku-keepalive": "0.0.4",
     "hubot-plusplus": "^1.1.5",
-    "hubot-redis-brain": "0.0.2",
+    "hubot-redis-brain": "0.0.3",
     "hubot-slack": "^3.3.0",
-    "validator": "^3.39.0",
-    "coffee-script": "1.10.0"
+    "toformat": "^1.0.0",
+    "validator": "^5.1.0"
   },
   "devDependencies": {
-    "chai": "^2.3.0",
+    "chai": "^3.5.0",
     "hubot-test-helper": "^1.2.0",
     "mocha": "^2.2.5",
     "sinon": "^1.14.1",
