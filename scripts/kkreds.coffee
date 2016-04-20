@@ -100,19 +100,40 @@ module.exports = (robot) ->
     hasNotParticipatedThisMeridian = currentUTC != user.debounce
 
     if is420 && hasNotParticipatedThisMeridian
-      user.credit(1)
+      amount = if robot.isSuper420(current) then 42 else 1
+      user.credit(amount)
       user.debounce = currentUTC
       user.save()
-      res.reply "successfully mined 1 kkred"
+      currency = if amount == 1 then "kkred" else "kkreds"
+      res.reply "successfully mined #{amount} #{currency}"
 
-  robot.check420 = (current) ->
-    currentUTC = Date.UTC(
+  robot.toUTC = (current) ->
+    return Date.UTC(
       current.getUTCFullYear(),
       current.getUTCMonth(),
       current.getUTCDay(),
       current.getUTCHours(),
       current.getUTCMinutes(),
     )
+
+  robot.isSuper420 = (current) ->
+    day420 = Date.UTC(
+      current.getUTCFullYear(),
+      4-1,
+      20
+    )
+    dayCurrent = Date.UTC(
+      current.getUTCFullYear(),
+      current.getUTCMonth(),
+      current.getUTCDate()
+    )
+
+    console.log(day420, dayCurrent)
+
+    return day420 == dayCurrent
+
+  robot.check420 = (current) ->
+    currentUTC = robot.toUTC(current)
     currentOffset = current.getTimezoneOffset() / 60;
     specialTimes = [
       Date.UTC(

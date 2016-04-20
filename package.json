@@ -21,7 +21,8 @@
     "hubot-test-helper": "^1.2.0",
     "mocha": "^2.2.5",
     "sinon": "^1.14.1",
-    "sinon-chai": "^2.7.0"
+    "sinon-chai": "^2.7.0",
+    "timekeeper": "0.0.5"
   },
   "engines": {
     "node": "0.12.x"
