@@ -3,7 +3,7 @@
 //
 // Commands:
 //     hubot microcenter add (url) - add watch item for richardson location
-//     hubot microcenter remove (id) - remove watch item for richardson location
+//     hubot microcenter remove (url) - remove watch item for richardson location
 //     hubot microcenter list - list all watch items
 //
 // Notes:
