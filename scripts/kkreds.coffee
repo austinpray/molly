@@ -105,7 +105,9 @@ module.exports = (robot) ->
       user.debounce = currentUTC
       user.save()
       currency = if amount == 1 then "kkred" else "kkreds"
-      res.reply "successfully mined #{amount} #{currency}"
+      successMessage = "successfully mined #{amount} #{currency}"
+      console.log("#{user.name} #{successMessage}")
+      res.reply successMessage
 
   robot.toUTC = (current) ->
     return Date.UTC(
@@ -127,8 +129,6 @@ module.exports = (robot) ->
       current.getUTCMonth(),
       current.getUTCDate()
     )
-
-    console.log(day420, dayCurrent)
 
     return day420 == dayCurrent
 
