@@ -6,4 +6,11 @@ const scopedClient = require("scoped-http-client");
 
 const http = url => scopedClient.create(url);
 
-updateProductInfo({http, redis});
+updateProductInfo({http, redis})
+  .then(function () {
+    redis.quit();
+  })
+  .catch(function (err) {
+    console.log("cron issue", err);
+    redis.quit();
+  });
