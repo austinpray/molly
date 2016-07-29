@@ -16,14 +16,14 @@ const {microcenterAdd, microcenterRemove, microcenterList} = require("../lib/mic
 const redis = require("redis").createClient(process.env.REDISTOGO_URL);
 
 module.exports = function(robot) {
-  robot.respond(/microcenter add (\S*)/i, microcenterAdd({
+  robot.respond(/(?:microcenter|mc) add (\S*)/i, microcenterAdd({
     redis,
     http: robot.http.bind(robot)
   }));
 
-  robot.respond(/microcenter remove (\S*)/i, microcenterRemove({redis}));
+  robot.respond(/(?:microcenter|mc) remove (\S*)/i, microcenterRemove({redis}));
 
-  robot.respond(/microcenter list/i, microcenterList({
+  robot.respond(/(?:microcenter|mc) list/i, microcenterList({
     redis,
     http: robot.http.bind(robot)
   }));
