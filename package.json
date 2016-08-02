@@ -19,6 +19,7 @@
     "moment": "^2.14.1",
     "redis": "^2.6.2",
     "scoped-http-client": "^0.11.0",
+    "sentiment": "^1.0.6",
     "toformat": "^1.0.0",
     "urijs": "^1.18.1",
     "validator": "^5.1.0"
@@ -37,6 +38,6 @@
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register",
     "cron": "node bin/cron.js",
-    "dev": "REDISTOGO_URL=redis://localhost:6379 ./bin/hubot"
+    "dev": "NODE_ENV=development REDISTOGO_URL=redis://localhost:6379 ./bin/hubot"
   }
 }
