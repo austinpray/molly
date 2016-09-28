@@ -11,6 +11,8 @@
 #
 # Author:
 #   austinpray
+# Co-arthur:
+#   darrencattle
 
 Decimal = require("toformat")(require("decimal.js"))
 validator = require "validator"
@@ -93,8 +95,6 @@ module.exports = (robot) ->
     is420 = robot.check420(current)
     user = new User(res)
 
-    if ["ridbot", "hal", "viper"].indexOf(user.name) > -1
-      return
 
     # aight I'm going to bed
     hasNotParticipatedThisMeridian = currentUTC != user.debounce
