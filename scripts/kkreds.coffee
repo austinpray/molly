@@ -95,7 +95,7 @@ module.exports = (robot) ->
     is420 = robot.check420(current)
     user = new User(res)
 
-    // ban users from mining here
+    # ban users from mining here
     if ["hal"].indexOf(user.name) > -1
       return
 
