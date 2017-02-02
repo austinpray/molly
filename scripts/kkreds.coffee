@@ -96,7 +96,7 @@ module.exports = (robot) ->
     user = new User(res)
 
     # ban users from mining here
-    if ["hal", "ridbot"].indexOf(user.name) > -1
+    if [].indexOf(user.name) > -1
       return
 
     # aight I'm going to bed
