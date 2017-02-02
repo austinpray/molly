@@ -101,7 +101,7 @@ module.exports = (robot) ->
 
     # aight I'm going to bed
     hasNotParticipatedThisMeridian = currentUTC != user.debounce
-
+    console.log("#{user.name} attempting to get paid", "user.debounce", user.debounce, "currentUTC", currentUTC, "is420", is420)
     if is420 && hasNotParticipatedThisMeridian
       amount = if robot.isSuper420(current) then 42 else 1
       user.credit(amount)
