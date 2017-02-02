@@ -103,11 +103,14 @@ module.exports = (robot) ->
     hasNotParticipatedThisMeridian = currentUTC != user.debounce
     console.log("#{user.name} attempting to get paid", "user.debounce", user.debounce, "currentUTC", currentUTC, "is420", is420)
     if is420 && hasNotParticipatedThisMeridian
+      console.log("#{user.name} is able to be paid")
       amount = if robot.isSuper420(current) then 42 else 1
+      currency = if amount == 1 then "kkred" else "kkreds"
       user.credit(amount)
       user.debounce = currentUTC
+      console.log("#{user.name} #{currency} is being saved to the database")
       user.save()
-      currency = if amount == 1 then "kkred" else "kkreds"
+      console.log("#{user.name} #{currency} was saved successfully to the database")
       successMessage = "successfully mined #{amount} #{currency}"
       console.log("#{user.name} #{successMessage}")
       res.reply successMessage
