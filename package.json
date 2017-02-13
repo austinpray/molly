@@ -5,9 +5,9 @@
   "author": "Austin Pray <austin@austinpray.com>",
   "description": "A simple helpful robot for your Company",
   "dependencies": {
-    "cheerio": "^0.20.0",
-    "coffee-script": "1.10.0",
-    "decimal.js": "^6.0.0",
+    "cheerio": "^0.22.0",
+    "coffee-script": "^1.12.3",
+    "decimal.js": "^7.1.1",
     "form-urlencoded": "^1.4.1",
     "hubot": "^2.12.0",
     "hubot-diagnostics": "0.0.1",
@@ -19,18 +19,18 @@
     "moment": "^2.14.1",
     "redis": "^2.6.2",
     "scoped-http-client": "^0.11.0",
-    "sentiment": "^1.0.6",
+    "sentiment": "^3.0.0",
     "toformat": "^1.0.0",
     "urijs": "^1.18.1",
-    "validator": "^5.1.0"
+    "validator": "^6.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "hubot-test-helper": "^1.2.0",
-    "mocha": "^2.2.5",
+    "mocha": "^3.2.0",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.7.0",
-    "timekeeper": "^0.1.1"
+    "timekeeper": "^1.0.0"
   },
   "engines": {
     "node": "7.x"
