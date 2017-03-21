@@ -178,7 +178,7 @@ module.exports = (robot) ->
       return res.reply "Need to specify amount"
 
     # validation
-    if !validator.isAlphanumeric(target)
+    if !validator.isAscii(target)
       return res.reply "Invalid characters in username"
     if !validator.isFloat(amount)
       return res.reply "Amount needs to be a number"
