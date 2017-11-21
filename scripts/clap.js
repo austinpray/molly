@@ -12,7 +12,7 @@ module.exports = function(robot) {
     res.send(res.match[1].split(' ').join(' :clap: '));
   });
   
-  robot.respond(/think (.+)/i, function (res) {
+  robot.respond(/think/i, function (res) {
     res.send(`
 ⠰⡿⠿⠛⠛⠻⠿⣷
 ⠀⠀⠀⠀⠀⠀⣀⣄⡀⠀⠀⠀⠀⢀⣀⣀⣤⣄⣀⡀
