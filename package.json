@@ -32,9 +32,6 @@
     "sinon-chai": "^2.7.0",
     "timekeeper": "^0.1.1"
   },
-  "engines": {
-    "node": "7.x"
-  },
   "scripts": {
     "test": "mocha --compilers coffee:coffee-script/register",
     "cron": "node bin/cron.js",
